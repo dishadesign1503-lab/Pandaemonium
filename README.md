@@ -66,3 +66,13 @@ Detail that OpenStreetMap does not record was modelled from street-level photos 
 ## Data licence
 
 Map data © OpenStreetMap contributors, available under the Open Database License (ODbL): <https://www.openstreetmap.org/copyright>. `data/site_model_data.json` is a derived database and is shared under the ODbL as well.
+
+## Site canvas (web)
+
+`web/` holds an interactive, hand-drawn style version of the model for site analysis. It shows a 3D view and a plan, and you can sketch on both. Tools include pencil, marker, brush, arrows, wind flows, colour zones, people and other stamps, notes, measuring and circling elements. A sun and shadow study uses the real sun position for Weimar.
+
+- `index.html` is the page itself. It uses three.js from a CDN.
+- `site_manifest.json` lists the 112 clickable elements, with their layer, category and bounding box.
+- `site_mesh.txt` is the low-poly web mesh: base64 text of int16 positions in cm, followed by uint32 triangle indices.
+
+To run it locally, serve the folder with any static server, for example `python -m http.server` inside `web/`. Opening the file directly will not work, because the page loads its mesh with `fetch`. Saving to an account and the image download only work in the published claude.ai version. Locally, sketches stay in the browser.
